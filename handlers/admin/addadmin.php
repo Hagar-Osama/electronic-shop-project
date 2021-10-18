@@ -37,14 +37,14 @@
         $_SESSION['errors'][] = 'invalid role';
     }
     if (! empty($_SESSION['errors'])) {
-        header('location:../../admin/add.php');
+        header('location:'.URL.'admin/add.php');
     }else {
         //make connection
         $sql = "INSERT INTO users (`name`, email, `password`, `type`) VALUES ('$name', '$email', '$password', '$type') ";
         $result = mysqli_query($connection, $sql);
         if (mysqli_affected_rows($connection) > 0) {
             $_SESSION['success'] = 'Data Has Been Inserted Successfully';
-            header('location:../../admin/view.php');
+            header('location:'.URL.'admin/view.php');
         }else {
             echo 'error '. mysqli_error($connection);
         }

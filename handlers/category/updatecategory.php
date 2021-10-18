@@ -13,7 +13,7 @@ if (empty($categoryname)) {
       $_SESSION['errors'] [] = 'name must be less than 21 char';
    } 
    if(! empty($_SESSION['errors'])) {
-       header('location:../../category/edit.php');
+       header('location:'.URL.'category/edit.php');
    }else {
        //make connection
        $sql = "UPDATE categories SET `name` = '$categoryname' where id = '$id'";
@@ -21,7 +21,7 @@ if (empty($categoryname)) {
        if (mysqli_affected_rows($connection) > 0) {
            $_SESSION['success'] = 'data has been updated successfully';
           // echo "sdfasdfsdfsdf";
-           header('location:../../category/view.php');
+           header('location:'.URL.'category/view.php');
        }else {
            echo 'error '. mysqli_error($connection);
        }

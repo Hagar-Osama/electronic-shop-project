@@ -1,5 +1,6 @@
 <?php session_start();
  include_once 'inc/connection.php';
+ 
 if (isset($_SESSION['login_email'])) {
   header('location:profile.php');
 }
@@ -18,7 +19,7 @@ if (isset($_POST['login'])) {
 
       $_SESSION['login_email'] = $data['email'];
      // print_r($_SESSION);
-      header('location:profile.php');
+      header('location:'.URL.'profile.php');
     }
 
   }

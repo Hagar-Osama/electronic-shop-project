@@ -1,4 +1,4 @@
-<?php define("URL","http://localhost/electronics_shop_project/"); ?>
+<?php include_once 'connection.php'; ?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -22,18 +22,18 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href=<?= URL;?>>Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href='<?= URL;?>profile.php'>Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href=<?= URL."category/view.php";?>>Categories</a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href=<?= URL."product/add.php";?>>Products</a>
+        <a class="nav-link" href=<?= URL."product/view.php";?>>Products</a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href=<?= URL."admin/add.php";?>>Users</a>
+        <a class="nav-link" href=<?= URL."admin/view.php";?>>Users</a>
       </li>
       
     </ul>
@@ -41,7 +41,7 @@
     <ul class="navbar-nav mr-right">
 
       <li class="nav-item">
-        <a class="nav-link" href=<?= URL."login.php";?>>Profile</a>
+        <a class="nav-link" href=<?= URL."profile.php";?>>Profile</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href=<?=URL."logout.php"; ?>>Logout</a>

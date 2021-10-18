@@ -25,7 +25,7 @@ if(mysqli_affected_rows($connection) > 0){
     $result = mysqli_query($connection, $sql);
     if(mysqli_affected_rows($connection) > 0) {
         echo 'data deleted successfully';
-        header('refresh:2;url=view.php');
+        header('refresh:2;url='. URL. 'view.php');
     }
 
 }else {

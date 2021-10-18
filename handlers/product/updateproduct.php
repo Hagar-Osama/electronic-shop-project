@@ -33,7 +33,7 @@ if (isset($_POST['update'])) {
         $_SESSION ['errors'] [] = 'quantity must be a number and greater than zero';
     }
     if (! empty($_SESSION['errors'])) {
-        header('location:../../product/edit.php');
+        header('location:'.URL.'product/edit.php');
     } else {
          //make connection
          $sql = "UPDATE products SET `category_id` = '$categoryid', `code` = '$code', `product_name` = '$name', `price` = '$price', `quantity` = '$quantity' WHERE `product_id` = '$id'";
@@ -45,7 +45,7 @@ if (isset($_POST['update'])) {
 
          if (mysqli_affected_rows($connection) > 0) {
              $_SESSION['success'] = 'Data Has Been Updated Successfully';
-             header('location:../../product/view.php');
+             header('location:'.URL.'product/view.php');
          }else {
              'error '. mysqli_errno($connection);
          }

@@ -38,7 +38,7 @@ if (isset($_POST['update'])) {
         $_SESSION['errors'][] = 'invalid role';
     }
     if (! empty($_SESSION['errors'])) {
-        header('location:../../admin/edit.php');
+        header('location:'.URL.'admin/edit.php');
     }else {
                 //make connection
      $sql = "UPDATE users SET `name` = '$name', email = '$email', `password` = '$password' , `type` = '$type' where id = '$id'";
@@ -46,7 +46,7 @@ if (isset($_POST['update'])) {
      if (mysqli_affected_rows($connection) > 0) {
          $_SESSION['success'] = 'Data Has Been Updated Successfully';
 
-         header('location:../../admin/view.php');
+         header('location:'.URL.'admin/view.php');
      }else {
          'error '. mysqli_errno($connection);
      }

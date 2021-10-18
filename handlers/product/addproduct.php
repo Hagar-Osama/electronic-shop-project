@@ -32,14 +32,14 @@ if (isset($_POST['submit'])) {
         $_SESSION ['errors'] [] = 'quantity must be a number and greater than zero';
     }
     if (! empty($_SESSION['errors'])) {
-        header('location:../../product/add.php');
+        header('location:'.URL.'product/add.php');
     }else {
         //make connection
         $sql = "INSERT INTO products (category_id, code, product_name, price, quantity) VALUES ('$categoryid', '$code', '$name', '$price', '$quantity') ";
         $result = mysqli_query($connection, $sql);
         if (mysqli_affected_rows($connection) > 0) {
             $_SESSION['success'] = 'Data Has Been Inserted Successfully';
-            header('location:../../product/view.php');
+            header('location:'.URL.'product/view.php');
         }else {
             echo 'error '. mysqli_error($connection);
         }

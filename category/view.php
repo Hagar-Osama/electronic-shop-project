@@ -41,8 +41,8 @@ $result = mysqli_query($connection, $sql);
                         <th scope="row"><?= $i++; ?></th>
                         <td><?= $data['name']; ?> </td>
                         <td>
-                            <a href="edit.php?id=<?=$data['id']; ?>" class="btn btn-info">Edit <i class="bi bi-pencil-square"></i></a>
-                            <a href="delete.php?id=<?=$data['id']; ?>" class="btn btn-danger">Delete <i class="bi bi-x-square-fill"></i></a>
+                            <a href="<?= URL;?>category/edit.php?id=<?=$data['id']; ?>" class="btn btn-info">Edit <i class="bi bi-pencil-square"></i></a>
+                            <a href="<?= URL;?>category/delete.php?id=<?=$data['id']; ?>" class="btn btn-danger">Delete <i class="bi bi-x-square-fill"></i></a>
                         </td>
                     </tr>
                     <?php endwhile; ?>

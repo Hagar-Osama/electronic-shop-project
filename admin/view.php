@@ -43,8 +43,8 @@ $result = mysqli_query($connection, $sql);
                         <td><?= $data['email']; ?> </td>
                         <td><?= $data['type']; ?> </td>
                         <td>
-                            <a href="edit.php?id=<?=$data['id']; ?>" class="btn btn-info">Edit <i class="bi bi-pencil-square"></i></a>
-                            <a href="delete.php?id= <?=$data['id']; ?>" class="btn btn-danger">Delete <i class="bi bi-x-square-fill"></i></a>
+                            <a href="<?= URL;?>admin/edit.php?id=<?=$data['id']; ?>" class="btn btn-info">Edit <i class="bi bi-pencil-square"></i></a>
+                            <a href="<?= URL;?>admin/delete.php?id= <?=$data['id']; ?>" class="btn btn-danger">Delete <i class="bi bi-x-square-fill"></i></a>
                         </td>
                     </tr>
                     <?php endwhile; ?>

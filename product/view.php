@@ -51,8 +51,8 @@ $result = mysqli_query($connection, $sql);
                         <th scope="row"><?= $data['category_id']; ?></th>
 
                         <td>
-                            <a href="edit.php?id=<?=$data['product_id']; ?>" class="btn btn-info">Edit <i class="bi bi-pencil-square"></i></a>
-                            <a href="delete.php?id=<?=$data['product_id']; ?>" class="btn btn-danger">Delete <i class="bi bi-x-square-fill"></i></a>
+                            <a href="<?= URL;?>product/edit.php?id=<?=$data['product_id']; ?>" class="btn btn-info">Edit <i class="bi bi-pencil-square"></i></a>
+                            <a href="<?=URL;?>product/delete.php?id=<?=$data['product_id']; ?>" class="btn btn-danger">Delete <i class="bi bi-x-square-fill"></i></a>
                         </td>
                     </tr>
                     <?php endwhile; ?>

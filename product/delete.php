@@ -16,7 +16,7 @@ if (isset($_GET['id']) && ! empty($_GET['id'])) {
          //   echo 'Data Has Been Deleted Successfully';
            // echo $id;
             //die();
-           header ('location:view.php');
+           header ('location:' . URL. 'view.php');
           
         }else {
             $_SESSION['errors'] [] = 'Error';
