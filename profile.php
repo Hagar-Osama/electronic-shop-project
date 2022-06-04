@@ -1,6 +1,7 @@
-<?php require_once 'inc/header.php'; ?>     
+<?php
+ require_once 'inc/header.php'; 
+ ?>     
     <h1 class="text-center p-3 border display-1">  Home Page  </h1>
-
     <div class="jumbotron">
         <h1 class="display-4"> Registration System </h1>
         <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>

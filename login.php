@@ -1,27 +1,29 @@
 <?php session_start();
- include_once 'inc/connection.php';
- 
-if (isset($_SESSION['login_email'])) {
-  header('location:profile.php');
-}
+include 'inc/connection.php';
+$_SESSION['errors'] = '';
+
+
 if (isset($_POST['login'])) {
-  $email = $_POST['email'];
-  $password = $_POST['password'];
-  $hash_pass = password_hash($password,PASSWORD_DEFAULT);
+
+  $email = mysqli_real_escape_string($connection, $_POST['email']);
+
+  $password = mysqli_real_escape_string($connection, $_POST['password']);
+  $hash_pass = password_hash($password, PASSWORD_DEFAULT);
   $sql = "SELECT email, `password` from users where email = '$email'";
+  
   $result = mysqli_query($connection, $sql);
- 
+  
   if (mysqli_affected_rows($connection) > 0) {
-    $data = mysqli_fetch_assoc($result);
-    //var_dump($data);
-    //die();
-    if (password_verify($password, $data['password'])) {
+    $user = mysqli_fetch_assoc($result);    
+    //check whether user logged in or not
+    if (password_verify($_POST['password'], $user['password'])) {
+      $_SESSION['loggedin'] = $user['email'];
+      header('location:' . URL . 'profile.php');
+    } else {
 
-      $_SESSION['login_email'] = $data['email'];
-     // print_r($_SESSION);
-      header('location:'.URL.'profile.php');
+      $_SESSION['errors'] = "Failed To Log In";
+      // header("location:" . URL . "login.php");
     }
-
   }
 }
 
@@ -48,8 +50,8 @@ if (isset($_POST['login'])) {
   <div class="container">
     <div class="row">
       <div class="col-6 mx-auto">
-        
-        <form class="p-4 m-3 border bg-gradient-info" method = "POST" action = "login.php">
+
+        <form class="p-4 m-3 border bg-gradient-info" method="POST" action="">
           <div class="form-group">
             <label for="email">Email</label>
             <input type="text" class="form-control" id="email" name="email">
@@ -62,11 +64,18 @@ if (isset($_POST['login'])) {
           <button type="submit" class="btn btn-success" name="login">
             <i class="bi bi-reply-all-fill"></i> Login
           </button>
+          <br /> <br />
+          <?php if (!empty($_SESSION['errors'])) : ?>
+            <div class='alert alert-danger'>
+              <span><?= $_SESSION['errors']; ?></span>
+            </div>
+          <?php endif; ?>
         </form>
       </div>
     </div>
   </div>
 
+  <?php unset($_SESSION['errors']); ?>
 
   <!-- Optional JavaScript; choose one of the two! -->
 
